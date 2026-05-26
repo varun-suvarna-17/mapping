@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-main: #0B0B0F;
+  --color-card-bg: #17171C;
+  --color-primary-orange: #F97316;
+  --color-orange-hover: #EA580C;
+  --color-text-main: #F5F5F5;
+  --color-text-muted: #A1A1AA;
+  --color-border-custom: #27272A;
+  
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow-ring: glow-ring 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  --animate-flow-dash: flow-dash 1.5s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
+}
+
+@layer base {
+  body {
+    background-color: #0B0B0F;
+    color: #F5F5F5;
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@keyframes glow-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Custom premium scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F97316;
+}
+
+/* Glassmorphism panel styling */
+.glass-panel {
+  background: rgba(23, 23, 28, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(39, 39, 42, 0.8);
+}
+
+.glass-nav {
+  background: rgba(11, 11, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(39, 39, 42, 0.5);
+}
+
+/* Glowing border effect */
+.glow-card {
+  position: relative;
+}
+
+.glow-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), transparent 40%, transparent 60%, rgba(39, 39, 42, 0.5));
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.glow-card:hover::after {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.4), transparent 40%, transparent 60%, rgba(249, 115, 22, 0.1));
+}
+
+/* SVG Line Drawing animation */
+.animated-draw-line {
+  stroke-dasharray: 8;
+  animation: flow-dash 2s linear infinite;
+}
+
+/* Page transitions */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
